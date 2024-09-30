@@ -1,0 +1,8 @@
+[build]
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ."
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin"
+  status = 301
+  force = true

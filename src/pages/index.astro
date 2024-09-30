@@ -1,0 +1,25 @@
+---
+export const prerender = false;
+import Layout from "../layouts/PageLayout.astro";
+import { sanityClient } from 'sanity:client';
+
+const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug)]`);
+---
+<Layout>
+<section>
+    <h2>Blog</h2>
+    <ul>
+      {
+        posts.map((post) => {
+          return (
+            <li>
+              <a href={'/posts/' + post.slug.current}>{post.title}</a>
+            </li>
+          );
+        })
+      }
+  </ul>
+</section>
+</Layout>
+    
+  
